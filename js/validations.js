@@ -48,8 +48,6 @@ function validatePhoneNumber()
 {
   var phonenoFormat = /^\d{10}$/;
   var phoneNumber = document.contactForm.phone.value;
-  console.log(phoneNumber);
-  console.log(phoneNumber.match(phonenoFormat))
   if(phoneNumber.match(phonenoFormat))
   {$("input[name='phone']").next('.error-msg').hide();
       return true;
@@ -63,7 +61,7 @@ function validatePhoneNumber()
   
 // Validation for email address	format  
 function validateEmail()
-      {	console.log('inininin')
+      {
          var emailID = document.contactForm.email.value;
          atposition = emailID.indexOf("@");
          dotposition = emailID.lastIndexOf(".");
