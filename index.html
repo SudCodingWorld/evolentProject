@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Information</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href="css/contact-info.css" rel="stylesheet" id="bootstrap-css">
+<script src="js/validations.js"></script>
+<script src="js/formOperations.js"></script>
+</head>
+<body>
+<div class="form-container">
+<h1>Add a Contact</h1>
+ <form action="javascript:void(0);" name="contactForm" method="POST"> 
+    <label>First Name</label>
+    <input type="text" name="fname" class="input-box">
+    <label>Last Name</label>
+    <input type="text" name="lname" class="input-box">
+    <label>Email Address</label>
+    <input type="text" name="email" class="input-box">
+    <label>Mobile Number</label>
+    <input type="text" name="phone" maxlength="10" class="input-box">
+    <label>Status</label>
+    <input id='r1' type="radio" name="status" value="Active" checked> Active</input>
+	<input id='r2' type="radio" name="status" value="Inactive">Inactive</input>
+	<div class="saveBtn-group">
+    <input type="submit" value="Save" class="save-btn btn-blue">
+	<input type="button" value="Cancel"  class="cancel-btn btn-blue">
+	</div>
+	<div class="updateBtn-group">
+    <input type="button" value="Update" class="update-btn btn-blue">
+	<input type="button" value="Cancel"  class="cancel-btn btn-blue">
+	</div>
+    <div class="clearfix"></div>
+    </form>
+</div>
+<div class="table-container">
+	 <table id="contactTable" class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+			<th>Email ID</th>
+			<th>Phone</th>
+			<th>Status</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+	<tbody>
+           
+		</tbody>
+    </table>
+</div>
+</body>
+
+</html>

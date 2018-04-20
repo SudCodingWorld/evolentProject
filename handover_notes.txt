@@ -1,0 +1,20 @@
+Languages used HTML,CSS,JS,JQuery
+
+Notes:
+1.Fill all the feilds in Add a contact form.
+2.Validations:
+	1. All feilds are mandatory.
+	2. Valid Email Id format is neccesary.
+	3. 10Digit Telephone number is neccesary.
+	
+3.If the data is valid , it will get stored in the array and reflect on the table on the right hand side.
+4.Inserted data can be edited by clicking on edit button.
+5.Edit will bring all the old values on Contact form.
+6.Update the values and click on update.
+7.Data will get updated in the table.
+8.To remove a contact click on delete .
+
+
+2 open bugs found in unit testing:
+	1. Radiobutton values are not getting set correct.
+	2. Validations are breaking in case record update.
