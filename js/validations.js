@@ -1,6 +1,7 @@
 /* Javascript Validations */
 
 // Validation for empty feilds
+
 function validate()
       {
          if( document.contactForm.fname.value == "" )
@@ -26,8 +27,9 @@ function validate()
             document.contactForm.email.focus();	
             return false;
          } else {
-			 var validMail = validateEmail();
-			 return validMail;
+			var validMail = validateEmail();
+			if (validMail === false)
+				return false
 		 }
          if( document.contactForm.phone.value == "" )
          {
@@ -35,30 +37,12 @@ function validate()
             document.contactForm.phone.focus();	
             return false;
          } else {
-			 return validatePhoneNumber();
-			// return validPhone;
-			 
-		 }
-         
-		   
-         return( true );
+			 var validPhone = validatePhoneNumber();
+			 if (validPhone === false)
+				return false
+		 } 
+         return true;
       }
-
-// Validation for Ten digit phone number
-function validatePhoneNumber()
-{
-  var phonenoFormat = /^\d{10}$/;
-  var phoneNumber = document.contactForm.phone.value;
-  if(phoneNumber.match(phonenoFormat))
-  {$("input[name='phone']").next('.error-msg').hide();
-      return true;
-  }
-  else
-  {
-    $( "<p class='error-msg'>Not a valid mobile number!</p>" ).insertAfter( "input[name='phone'");
-     return false;
-  }
- }
   
 // Validation for email address	format  
 function validateEmail()
@@ -74,5 +58,22 @@ function validateEmail()
             return false;
          }
 		 $("input[name='email']").next('.error-msg').hide();
-         return( true );
+		 return true;
       }
+	  
+// Validation for Ten digit phone number
+function validatePhoneNumber()
+{
+  var phonenoFormat = /^\d{10}$/;
+  var phoneNumber = document.contactForm.phone.value;
+  if(phoneNumber.match(phonenoFormat))
+  {
+	  $("input[name='phone']").next('.error-msg').hide();
+	  return true;
+  }
+  else
+  {
+    $( "<p class='error-msg'>Not a valid mobile number!</p>" ).insertAfter( "input[name='phone'");
+     return false;
+  }
+ }

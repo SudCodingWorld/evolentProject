@@ -4,7 +4,6 @@ var inputFirstname   = document.getElementsByName("fname");
 var inputLastname    =document.getElementsByName("lname");
 var inputEmail    = document.getElementsByName("email");
 var inputPhone    = document.getElementsByName("phone");
-var activeStatus = document.getElementsByName("status").checked;
 
 var dataArray = [];
 
@@ -52,10 +51,11 @@ $('document').ready(function(){
 	// function for add data.
 $(document).on('click','.save-btn', function(){	
 		event.preventDefault();
-		$('.error-msg').hide();
+		$('.error-msg').hide();	
 		var validatePage = validate();
 		if(validatePage === true) {
-		var newperson = contactPersonController.create(inputFirstname[0].value,inputLastname[0].value,inputEmail[0].value,inputPhone[0].value,"Active");
+		var activeStatus = $('input[name=status]:checked').val();	
+		var newperson = contactPersonController.create(inputFirstname[0].value,inputLastname[0].value,inputEmail[0].value,inputPhone[0].value,activeStatus);
 		dataArray.push(newperson);
 		contactPersonController.show();
 		inputFirstname[0].value = "";
@@ -100,8 +100,9 @@ $(document).on('click','.update-btn', function(){
 	var validateupdatePage = false;
 	validateupdatePage = validate();
 		if(validateupdatePage === true) {
+		var updateStatus = $('input[name=status]:checked').val();
 		var dataId = $(this).attr('data-id');
-		var updateperson = contactPersonController.create(inputFirstname[0].value,inputLastname[0].value,inputEmail[0].value,inputPhone[0].value,"Active");	
+		var updateperson = contactPersonController.create(inputFirstname[0].value,inputLastname[0].value,inputEmail[0].value,inputPhone[0].value,updateStatus);	
 		for(i=0; i<dataArray.length;i++){
 			if(dataArray[i].id == dataId){
 				dataArray.splice(i,1,updateperson);
