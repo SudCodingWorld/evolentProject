@@ -13,8 +13,3 @@ Notes:
 6.Update the values and click on update.
 7.Data will get updated in the table.
 8.To remove a contact click on delete .
-
-
-2 open bugs found in unit testing:
-	1. Radiobutton values are not getting set correct.
-	2. Validations are breaking in case record update.
