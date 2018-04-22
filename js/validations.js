@@ -20,6 +20,15 @@ function validate()
 		 }else {
 			$("input[name='lname']").next('.error-msg').hide();
 		 }
+		 if( document.contactForm.email.value == "" )
+         {
+			$( "<p class='error-msg'>Please provide your email!</p>" ).insertAfter( "input[name='email'");
+            document.contactForm.email.focus();	
+            return false;
+         } else {
+			 var validMail = validateEmail();
+			 return validMail;
+		 }
          if( document.contactForm.phone.value == "" )
          {
            $( "<p class='error-msg'>Please provide your mobile number!</p>" ).insertAfter( "input[name='phone'");
@@ -30,15 +39,7 @@ function validate()
 			// return validPhone;
 			 
 		 }
-         if( document.contactForm.email.value == "" )
-         {
-			$( "<p class='error-msg'>Please provide your email!</p>" ).insertAfter( "input[name='email'");
-            document.contactForm.email.focus();	
-            return false;
-         } else {
-			 var validMail = validateEmail();
-			 return validMail;
-		 }
+         
 		   
          return( true );
       }

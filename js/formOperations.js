@@ -52,6 +52,7 @@ $('document').ready(function(){
 	// function for add data.
 $(document).on('click','.save-btn', function(){	
 		event.preventDefault();
+		$('.error-msg').hide();
 		var validatePage = validate();
 		if(validatePage === true) {
 		var newperson = contactPersonController.create(inputFirstname[0].value,inputLastname[0].value,inputEmail[0].value,inputPhone[0].value,"Active");
@@ -95,6 +96,7 @@ $(document).on('click','.cancel-btn', function(){
 //Code to update existing record
 $(document).on('click','.update-btn', function(){
 	event.preventDefault();
+	$('.error-msg').hide();
 	var validateupdatePage = false;
 	validateupdatePage = validate();
 		if(validateupdatePage === true) {
