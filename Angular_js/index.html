@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Information</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<link href="css/contact-info.css" rel="stylesheet" id="bootstrap-css">
+<!-- <script src="js/validations.js"></script> -->
+
+</head>
+<body>
+<div ng-app="contactApp" ng-controller='contactInfoController'>
+ <div class="form-container">
+<h1>Add a Contact</h1>
+ <form action="javascript:void(0);" name="contactForm" method="POST"> 
+    <label>First Name</label>
+    <input type="text" name="fname" class="input-box" ng-model="newcontact.fname">
+    <label>Last Name</label>
+    <input type="text" name="lname" class="input-box" ng-model="newcontact.lname">
+    <label>Email Address</label>
+    <input type="email" name="email" class="input-box" ng-model="newcontact.email">
+    <label>Mobile Number</label>
+    <input type="text" name="phone" maxlength="10" class="input-box" ng-model="newcontact.phone">
+    <label>Status</label>
+    <input id='r1' type="radio" name="status" ng-model="newcontact.status" value="Active"> Active</input>
+	<input id='r2' type="radio" name="status" ng-model="newcontact.status" value="Inactive">Inactive</input>
+	<div class="saveBtn-group">
+    <input type="submit" value="Save" ng-click="saveContact()" class="save-btn btn-blue">
+	<input type="button" value="Cancel"  class="cancel-btn btn-blue">
+	</div>
+    <div class="clearfix"></div>
+    </form>
+</div>
+<div class="table-container">
+	 <table id="contactTable" class="table table-striped custab">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+			<th>Email ID</th>
+			<th>Phone</th>
+			<th>Status</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+	<tbody>
+          <tr ng-repeat="contact in contacts">
+			<td>{{ contact.id }}</td>
+			<td>{{ contact.fname }}</td>
+			<td>{{ contact.lname }}</td>
+			<td>{{ contact.email }}</td>
+			<td>{{ contact.phone }}</td>
+			<td>{{ contact.status }}</td>
+    <td class="text-center">
+        <a  href="#" class="edit-btn" ng-click="edit(contact.id)">Edit</a>
+        <a href="#" class="delete-btn" ng-click="delete(contact.id)">Delete</a>
+    </td>
+ </tr> 
+		</tbody>
+    </table>
+</div>
+</div>
+<script src="js/contactController.js"></script>
+</body>
+
+</html>
