@@ -11,20 +11,28 @@
 <div ng-app="contactApp" ng-controller='contactInfoController'>
  <div class="form-container">
 <h1>Add a Contact</h1>
- <form action="javascript:void(0);" name="contactForm" method="POST"> 
+ <form ng-submit="onSubmit(contactForm.$valid)" name="contactForm" novalidate="novalidate"> 
     <label>First Name</label>
-    <input type="text" name="fname" class="input-box" ng-model="newcontact.fname">
+    <input type="text" name="fname" class="input-box" ng-model="newcontact.fname" required>
+	<span class="error-msg" ng-show="submitAttempt && contactForm.fname.$error.required">Please provide your first name!</span>
     <label>Last Name</label>
-    <input type="text" name="lname" class="input-box" ng-model="newcontact.lname">
+    <input type="text" name="lname" class="input-box" ng-model="newcontact.lname" required>
+	<span class="error-msg" ng-show="submitAttempt && contactForm.lname.$error.required">Please provide your last name!</span>
     <label>Email Address</label>
-    <input type="email" name="email" class="input-box" ng-model="newcontact.email">
+    <input type="email" name="email" class="input-box" ng-model="newcontact.email" required>
+	<span class="error-msg" ng-show="submitAttempt && contactForm.email.$error.required">Please provide your email!</span>
+	<span class="error-msg" ng-show="submitAttempt && contactForm.email.$error.email">Not a valid Email address</span>
     <label>Mobile Number</label>
-    <input type="text" name="phone" maxlength="10" class="input-box" ng-model="newcontact.phone">
+    <input type="number" name="phone" ng-minlength="10" ng-maxlength="10" class="input-box" ng-model="newcontact.phone" required>
+	<span class="error-msg" ng-show="submitAttempt && contactForm.phone.$error.required">Please provide your Mobile Number!</span>
+	<span class="error-msg" ng-show="((contactForm.phone.$error.minlength || contactForm.phone.$error.maxlength) && submitAttempt)">
+            Not a valid Mobile Number
+            </span>
     <label>Status</label>
     <input id='r1' type="radio" name="status" ng-model="newcontact.status" value="Active"> Active</input>
 	<input id='r2' type="radio" name="status" ng-model="newcontact.status" value="Inactive">Inactive</input>
 	<div class="saveBtn-group">
-    <input type="submit" value="Save" ng-click="saveContact()" class="save-btn btn-blue">
+    <input type="submit" value="Save" class="save-btn btn-blue">
 	<input type="button" value="Cancel"  class="cancel-btn btn-blue">
 	</div>
     <div class="clearfix"></div>
@@ -45,7 +53,7 @@
     </thead>
 	<tbody>
           <tr ng-repeat="contact in contacts">
-			<td>{{ contact.id }}</td>
+			<td>{{ $index + 1 }}</td>
 			<td>{{ contact.fname }}</td>
 			<td>{{ contact.lname }}</td>
 			<td>{{ contact.email }}</td>
@@ -60,7 +68,7 @@
     </table>
 </div>
 </div>
-<script src="js/contactController.js"></script>
+<script src="controllers/contactController.js"></script>
 </body>
 
 </html>

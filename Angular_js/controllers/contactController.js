@@ -4,17 +4,17 @@ var uid = 1;
 
 
 app.controller('contactInfoController',function($scope) {
-    
     $scope.contacts = [
-    ];
+	];
+	$scope.onSubmit = function(validForm) {
+		$scope.submitAttempt = true;
+	if(validForm){
     
-    $scope.saveContact = function() {
         
         if($scope.newcontact.id == null) {
              $scope.newcontact.id = uid++;
              $scope.contacts.push($scope.newcontact);
         } else {
-            
              for(i in $scope.contacts) {
                     if($scope.contacts[i].id == $scope.newcontact.id) {
                         $scope.contacts[i] = $scope.newcontact;
@@ -22,8 +22,9 @@ app.controller('contactInfoController',function($scope) {
              }                
         }
         $scope.newcontact = {};
+		$scope.submitAttempt = false;
     }
-
+	}
     
     $scope.delete = function(id) {
         
